@@ -1,17 +1,28 @@
 package com.example.countryachievement.ui
 
+import android.icu.lang.UCharacter.GraphemeClusterBreak.V
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.viewbinding.ViewBinding
 import com.example.countryachievement.R
 import com.example.countryachievement.data.DataManager
+import com.example.countryachievement.databinding.ActivityMainBinding
 import com.example.countryachievement.util.CsvParse
 import java.io.BufferedReader
 import java.io.InputStreamReader
 
 class MainActivity : AppCompatActivity() {
+    lateinit var binding: ActivityMainBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+        addCallBack()
+    }
+    private fun addCallBack(){
+        parseFile()
+        val adapter = MedalsAdapter(DataManager.medals)
+        binding.recyclerMedals.adapter = adapter
     }
 
     private fun parseFile(){
