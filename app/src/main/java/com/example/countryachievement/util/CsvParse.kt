@@ -1,7 +1,5 @@
 package com.example.countryachievement.util
-
 import com.example.countryachievement.data.domain.Medals
-
 class CsvParse {
     fun parse(line: String): Medals{
         val tokens = line.split(",")

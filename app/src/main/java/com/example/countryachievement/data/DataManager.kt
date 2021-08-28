@@ -6,6 +6,5 @@ object DataManager {
     private val medalsList = mutableListOf<Medals>()
     val medals: List<Medals>
     get() = medalsList
-
     fun addMedal(medals: Medals) = medalsList.add(medals)
 }
